@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Courses</h2>
+
+<a href="/courses/create/">➕ Create Course</a>
+
+<table border="1" cellpadding="5">
+<tr>
+    <th>Title</th>
+    <th>Duration</th>
+    <th>Students</th>
+    <th>Actions</th>
+</tr>
+
+{% for c in courses %}
+<tr>
+    <td>{{ c.title }}</td>
+    <td>{{ c.duration_weeks }} weeks</td>
+    <td>{{ c.enrollment_set.count }}</td>
+    <td>
+        <a href="/courses/{{ c.id }}/">Detail</a>
+        <a href="/courses/{{ c.id }}/edit/">Edit</a>
+
+        <form action="/courses/{{ c.id }}/delete/" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

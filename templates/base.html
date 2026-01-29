@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student System</title>
+</head>
+<body>
+
+<h1>📚 Student Course Management</h1>
+
+<nav>
+    <a href="/courses/">Courses</a> |
+    <a href="/students/">Students</a> |
+    <a href="/enrollments/">Enrollments</a>
+</nav>
+
+<hr>
+
+{% if msg %}
+<p style="color:red;">{{ msg }}</p>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

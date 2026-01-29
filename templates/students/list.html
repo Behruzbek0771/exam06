@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Students</h2>
+
+<form method="get">
+Search: <input type="text" name="search">
+Min age: <input type="number" name="min_age">
+<button type="submit">Filter</button>
+</form>
+
+<br>
+
+<a href="/students/create/">➕ Create Student</a>
+
+<table border="1" cellpadding="5">
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Actions</th>
+</tr>
+
+{% for s in students %}
+<tr>
+    <td>{{ s.full_name }}</td>
+    <td>{{ s.email }}</td>
+    <td>{{ s.age }}</td>
+    <td>
+        <a href="/students/{{ s.id }}/">Detail</a>
+
+        <form action="/students/{{ s.id }}/delete/" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button>Delete</button>
+        </form>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

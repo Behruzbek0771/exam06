@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Create Course</h2>
+
+<form method="post">
+{% csrf_token %}
+
+<label>Title:</label><br>
+<input type="text" name="title"><br><br>
+
+<label>Description:</label><br>
+<textarea name="description"></textarea><br><br>
+
+<label>Duration weeks:</label><br>
+<input type="number" name="duration_weeks"><br><br>
+
+<button type="submit">Save</button>
+</form>
+
+{% endblock %}
